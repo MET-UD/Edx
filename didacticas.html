@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Didácticas e Innovación Pedagógica en Entornos Virtuales – DNIA</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700;800&family=Fira+Sans+Condensed:wght@400;500;800&family=Playfair+Display:ital,wght@1,700;1,800&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== VARIABLES ===== */
+:root{--gh:#595959;--gho:#3F3F3F;--tq:#3DA5B5;--tql:#2BB8CC;--pz:#6C6C88;--az:#4A90F0;--mo:#5B3CC4;--ve:#3A8B6B;--vb:#2E9E6B;--cr:#F6F1E7;--gs:#DCDCDC;--gt:#444;--c:var(--az)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:400 1rem/1.6 "Fira Sans",sans-serif;color:var(--gt);overflow-x:hidden}
+:focus-visible{outline:3px solid #F0A818;outline-offset:2px}
+/* ===== HEADER ===== */
+header{position:sticky;top:0;z-index:50;background:var(--gh);color:#fff;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;font-family:"Fira Sans Condensed",sans-serif}
+.logo{background:var(--gho);padding:.8rem 2rem .9rem 1.5rem;clip-path:polygon(0 0,100% 0,94% 100%,0 100%);box-shadow:0 4px 8px rgba(0,0,0,.3);line-height:1.1}
+.logo small{display:block;font-size:.7rem;letter-spacing:2px}.logo b{font-size:1.6rem;letter-spacing:5px}
+nav{margin-left:auto;display:flex;gap:.3rem;padding-right:1rem;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;text-transform:uppercase;padding:.8rem .8rem;font-weight:500;font-size:.95rem}
+nav a::after{content:" ▾";color:#6fdc9c}nav a:hover{background:var(--gho)}
+.line{height:20px;background:#000}
+/* ===== HERO ===== */
+.hero{background:var(--cr);min-height:520px;display:grid;place-items:center;padding:4rem 8vw;position:relative;overflow:hidden}
+.hero svg{position:absolute;opacity:.9}
+.hero h1{position:relative;text-align:center}
+.hero .k{font:800 1.5rem "Fira Sans";display:block}
+.hero .big{font:800 clamp(3rem,10vw,8rem)/.9 "Fira Sans Condensed";text-transform:uppercase;color:#3a3a3a;display:block}
+.hero .big i{font:italic 800 1em "Playfair Display";text-transform:none;color:var(--vb)}
+.hero p{position:relative;max-width:760px;margin:1.5rem auto 0;text-align:center;font:400 1.15rem/1.6 Lora,serif}
+.hero .or{color:#D9780F;font-weight:700;display:block;margin-top:1rem}
+/* ===== SECCIONES ===== */
+.sec{position:relative;padding:7rem 8vw 5rem;--tri:#D9D9D9}
+.sec::before{content:"";position:absolute;top:0;left:50%;width:90px;height:45px;transform:translateX(-50%);background:var(--tri);clip-path:polygon(0 0,100% 0,50% 100%)}
+.tit{border-left:1px solid #bbb;padding-left:1.5rem;margin-bottom:2rem}
+.tit span{display:block;line-height:.95}
+.tit .d{font:800 clamp(2.5rem,5vw,4.5rem) "Fira Sans";letter-spacing:-1px;color:#111}
+.tit .s{font:italic 700 clamp(3rem,8vw,6.5rem) "Playfair Display";margin-left:2rem;color:var(--c)}
+.tit .l{font:italic 700 clamp(2.5rem,6vw,5rem) "Playfair Display";margin-left:4rem;color:var(--gt)}
+.lead{max-width:700px;margin:0 0 3rem 1.5rem;font-size:1.1rem}
+.lead.serif{font:400 1.1rem/1.7 Lora,serif}
+b{font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;position:relative}
+.dc{border-top:4px solid var(--c);padding:1.2rem 0;box-shadow:0 6px 16px rgba(0,0,0,.08);padding:1.5rem;background:#fff}
+.dc .n{font:800 3rem/1 "Fira Sans";color:var(--c);opacity:.35}
+.dc h3{font:800 1.3rem/1.2 "Fira Sans";letter-spacing:-.5px;margin:.3rem 0 .2rem;text-transform:lowercase}
+.dc em{font:italic 700 .95rem "Playfair Display";color:var(--c);display:block;margin-bottom:.8rem}
+.dc p{font-size:.95rem;margin-bottom:.8rem}
+.dc .vs{border-left:3px solid var(--c);padding-left:.8rem;font:400 .95rem/1.55 Lora,serif}
+.plus{position:absolute;top:1.5rem;right:2rem;display:grid;grid-template-columns:repeat(4,22px);color:#ccc;font-size:1.3rem}
+/* morado */
+.mor{--c:var(--mo);--tri:#111;background:var(--gs);border-top:3px solid #000}
+.mor .tit{position:relative;border:0}
+.mor .tit::before{content:"";position:absolute;left:-4rem;top:0;bottom:0;width:50px;background:repeating-linear-gradient(45deg,#bbb 0 2px,transparent 2px 9px)}
+.tw{overflow-x:auto;background:#fff;box-shadow:0 6px 16px rgba(0,0,0,.1)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.92rem}
+th{background:var(--gh);color:#fff;text-align:left;padding:.8rem;font:500 .95rem "Fira Sans Condensed";text-transform:uppercase}
+td{padding:.8rem;border-bottom:1px solid #ddd;vertical-align:top}td:first-child{font-weight:700;color:var(--mo)}
+.rasgos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:3rem}
+.rasgos div{border-left:3px solid var(--mo);padding:.2rem 1rem}.rasgos h4{font:800 1.1rem "Fira Sans";margin-bottom:.3rem}.rasgos p{font-size:.93rem}
+/* verde */
+.verde{--c:var(--vb);padding:0}.verde::before{display:none}
+.info{display:grid;grid-template-columns:38% 62%}
+.pv{background:var(--ve);color:#fff;padding:4rem 2.5rem;position:relative}
+.pv::before{content:"";position:absolute;left:2.5rem;top:0;bottom:0;width:1px;background:#fff;opacity:.6}
+.pv .lg{font:800 2rem "Fira Sans";margin-left:2rem}
+.pv h2{font:italic 800 clamp(2.5rem,5vw,4.2rem)/1 "Playfair Display";margin:1.5rem 0 1rem 2rem}
+.pv p{margin-left:2rem;max-width:300px}
+.dotg{display:grid;grid-template-columns:repeat(3,10px);gap:12px;margin:2rem 0 0 2rem}.dotg i{width:6px;height:6px;border-radius:50%;background:#fff}
+.pr{padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-content:center;background:#fff}
+.card{background:rgba(90,90,90,.92);color:#fff;padding:1.3rem 1.3rem 3.6rem;position:relative;font:700 1.1rem/1.25 "Fira Sans"}
+.card span{display:block;font:400 .85rem "Fira Sans";opacity:.8;margin-bottom:.4rem}
+.card button{position:absolute;right:0;bottom:0;width:42px;height:42px;border:0;background:var(--vb);color:#fff;font-size:1.6rem;cursor:pointer}
+/* impacto */
+.imp{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:1rem}
+.imp div{border-top:3px solid #111;padding-top:1rem}.imp b.n{font:italic 800 3.5rem/1 "Playfair Display";color:var(--az);display:block}
+.imp h3{font:800 1.2rem "Fira Sans";margin:.4rem 0}
+.concl{margin-top:4rem;background:var(--gho);color:#fff;padding:2.5rem;font:400 1.1rem/1.7 Lora,serif;border-left:8px solid var(--tql)}
+.pill{display:inline-block;border:3px solid var(--az);border-radius:999px;padding:12px 32px;color:#000;text-decoration:none;transition:.25s;margin-top:2rem}.pill:hover{background:var(--az);color:#fff}
+/* ===== FOOTER ===== */
+.f1{background:var(--tq);color:#fff;padding:1.5rem 8vw;display:flex;align-items:center;gap:1.5rem;clip-path:polygon(0 0,78% 0,100% 100%,0 100%)}
+.f1 .lg{font:800 4rem/1 "Fira Sans";letter-spacing:-1px}.f1 .v{width:1px;align-self:stretch;background:#fff}.f1 p{font:italic 500 1.05rem "Fira Sans Condensed"}
+.f2{background:var(--pz);color:#fff;display:flex;justify-content:space-around;gap:1rem;flex-wrap:wrap;padding:.9rem 2rem}
+.f3{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url(https://picsum.photos/id/1067/1600/500) center/cover;/* REEMPLAZAR por foto real */color:#fff;padding:2.5rem 8vw}
+.f3 a{color:var(--tql);border-bottom:1px solid var(--tql);text-decoration:none}
+/* modal */
+#md{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;place-items:center;z-index:100;padding:1rem}#md.on{display:grid}
+#md>div{background:#fff;padding:2rem;max-width:560px;width:100%;max-height:90vh;overflow:auto;position:relative}
+#md h3{font:800 1.5rem "Fira Sans";margin-bottom:1rem;padding-right:2rem}#md h4{color:var(--ve);text-transform:uppercase;font:700 .85rem "Fira Sans Condensed";margin-top:1rem}
+#md .x{position:absolute;right:1rem;top:.4rem;background:0;border:0;font-size:2rem;cursor:pointer}
+/* reveal */
+.rv{opacity:0;transform:translateY(30px);transition:.8s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+@media(max-width:992px){.info{grid-template-columns:1fr}.pr{grid-template-columns:1fr}.f1{clip-path:none;flex-wrap:wrap}}
+@media(max-width:768px){nav{display:none}.tit .s,.tit .l{margin-left:.5rem}.mor .tit::before{display:none}.sec{padding:5rem 1.2rem 3rem}.plus{display:none}}
+</style>
+</head>
+<body>
+<!-- ===== HEADER ===== -->
+<header>
+ <div class="logo"><small>UNIVERSIDAD</small><b>NACIONAL</b><small>DE COLOMBIA</small></div>
+ <nav aria-label="Principal"><a href="#didacticas">Didácticas</a><a href="#caracteristicas">Características</a><a href="#casos">Casos</a><a href="#impacto">Impacto</a></nav>
+</header><div class="line"></div>
+
+<main>
+<!-- ===== HERO ===== -->
+<section class="hero" aria-labelledby="h1">
+ <svg style="left:2%;top:15%;width:160px" viewBox="0 0 160 200" aria-hidden="true"><path d="M10 150c40-90 20 60 70-20s30 80 70-40M20 90c30-40 60 20 100-30" fill="none" stroke="#2E8B6A" stroke-width="4"/><path d="M30 170c40 10 70-40 110-10" fill="none" stroke="#F0A818" stroke-width="4"/></svg>
+ <svg style="right:3%;bottom:8%;width:150px" viewBox="0 0 160 200" aria-hidden="true"><g fill="none" stroke="#444" stroke-width="3"><circle cx="40" cy="60" r="12"/><path d="M40 72v50l-15 40M40 122l15 40M40 90l-18-30M40 90l20-30"/><circle cx="100" cy="80" r="12"/><path d="M100 92v50l-15 40M100 142l15 40M100 110l-18-30M100 110l20-30"/></g></svg>
+ <div><h1 id="h1"><span class="k">Informe sintético</span><span class="big">Didácticas <i>e</i> innovación pedagógica</span></h1>
+ <p>Entornos virtuales para <b>jóvenes adultos</b>: tipos de didácticas, sus características y ejemplos prácticos para profesionales de 25 a 45 años.<span class="or">Superar la mera digitalización de contenidos.</span></p></div>
+</section>
+
+<!-- ===== 1. DIDÁCTICAS ===== -->
+<section class="sec" id="didacticas" aria-labelledby="t1">
+ <div class="plus" aria-hidden="true"><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i></div>
+ <h2 class="tit rv" id="t1"><span class="d">dnia</span><span class="s">didácticas</span><span class="l">virtuales</span></h2>
+ <p class="lead rv">La mediación tecnológica exige una nueva arquitectura técnico-pedagógica: modelos <b>adaptativos, inmersivos, incluyentes</b> y centrados en la <b>autonomía</b> del participante adulto, para lograr una alta transferencia de competencias al entorno laboral.</p>
+ <div class="cards rv">
+  <article class="dc"><div class="n">01</div><h3>Didáctica invertida + gamificación</h3><em>Flipped Classroom + Breakout Digital</em><p>La teoría se revisa antes de la sesión; el encuentro síncrono se dedica a resolver problemas, debatir y jugar retos de breakout, con IA generativa para contrastar hipótesis y analizar casos.</p><p class="vs"><b>Valor estratégico:</b> pasa de la escucha reactiva a una posición analítica e investigadora; aumenta la motivación intrínseca y la transferencia a decisiones operativas.</p></article>
+  <article class="dc"><div class="n">02</div><h3>Didáctica neuroadaptativa con IA</h3><em>Marco PAIDEIA y proyecto MEEBAI</em><p>Análisis multimodal de datos biométricos y conductuales para evaluar en tiempo real el compromiso cognitivo y la fatiga, con retroalimentación personalizada y microactividades recomendadas.</p><p class="vs"><b>Valor estratégico:</b> reemplaza secuencias estáticas por un flujo dinámico que ajusta la carga cognitiva, minimiza la saturación y mejora la retención.</p></article>
+  <article class="dc"><div class="n">03</div><h3>Diseño universal para el aprendizaje</h3><em>DUA / UDL en entornos asincrónicos</em><p>Elimina barreras cognitivas, sensoriales y temporales con repositorios multiformato (video subtitulado, guías, podcasts, esquemas) conformes con WCAG y con principios de <b>Lectura fácil</b>.</p><p class="vs"><b>Valor estratégico:</b> itinerarios personalizables y múltiples vías de evaluación que garantizan equidad para la diversidad funcional y los perfiles neurodivergentes.</p></article>
+  <article class="dc"><div class="n">04</div><h3>Didáctica inmersiva</h3><em>Realidad Virtual y Aumentada (RV/RA)</em><p>Simulaciones 3D, reconstrucciones de patrimonio y escenarios socioemocionales para desarrollar funciones ejecutivas, competencias emocionales y decisiones éticas en entornos seguros.</p><p class="vs"><b>Valor estratégico:</b> <i>learning by doing</i> donde la práctica real sería inviable, costosa o riesgosa; favorece la empatía y la comprensión profunda.</p></article>
+  <article class="dc"><div class="n">05</div><h3>Andragogía digital y autodirigida</h3><em>Formación permanente de adultos</em><p>Parte de la «necesidad de saber», la intencionalidad pragmática y la trayectoria profesional previa; el docente es mediador y mentor en problemas auténticos.</p><p class="vs"><b>Valor estratégico:</b> alinea el diseño con las metas profesionales, integra el bagaje previo y fortalece la autoeficacia y el aprendizaje a lo largo de la vida.</p></article>
+ </div>
+</section>
+
+<!-- ===== 2. CARACTERÍSTICAS ===== -->
+<section class="sec mor" id="caracteristicas" aria-labelledby="t2">
+ <h2 class="tit rv" id="t2"><span class="d">dnia</span><span class="s">compara</span><span class="l">características</span></h2>
+ <p class="lead rv">La efectividad no depende del uso aislado de herramientas, sino de articular <b>mecanismo de aprendizaje, adaptabilidad y dimensión tecnológica</b>.</p>
+ <div class="tw rv" tabindex="0" role="region" aria-label="Matriz analítica de didácticas virtuales"><table>
+  <caption class="sr" style="position:absolute;left:-9999px">Matriz analítica de didácticas virtuales</caption>
+  <thead><tr><th scope="col">Didáctica</th><th scope="col">Mecanismo clave</th><th scope="col">Personalización</th><th scope="col">Tecnología requerida</th></tr></thead>
+  <tbody>
+  <tr><td>Invertida + gamificación</td><td>Retos colaborativos, interacción síncrona y gamificación.</td><td><b>Medio-Alto:</b> ajuste de complejidad de retos y ritmo de debate.</td><td>Aula síncrona, salas de breakout, LLM/ChatGPT, software de gamificación.</td></tr>
+  <tr><td>Neuroadaptativa (PAIDEIA / MEEBAI)</td><td>Retroalimentación dinámica guiada por atención y estado afectivo.</td><td><b>Muy alto:</b> ajuste automático y en tiempo real.</td><td>Algoritmos de IA, datos biométricos/conductuales, módulos de recomendación.</td></tr>
+  <tr><td>DUA asincrónica</td><td>Diversificación de percepción, representación, expresión y compromiso.</td><td><b>Alto:</b> rutas y formatos evaluativos elegidos por el estudiante.</td><td>Plataformas accesibles (WCAG), repositorios multiformato.</td></tr>
+  <tr><td>Inmersiva (RV / RA)</td><td>Simulación 3D contextualizada y práctica vivencial segura.</td><td><b>Medio:</b> según decisiones de navegación del usuario.</td><td>Visores RV/RA, seguimiento motriz, modelado 3D.</td></tr>
+  <tr><td>Andragógica digital</td><td>Autorregulación, resolución pragmática y valoración de la experiencia previa.</td><td><b>Alto:</b> trayectoria alineada a metas laborales.</td><td>EVA asincrónicos, herramientas de autogestión, foros colaborativos.</td></tr>
+  </tbody></table></div>
+ <div class="rasgos rv">
+  <div><h4>Flexibilidad y transferencia del rol</h4><p>El profesor pasa de la exposición magistral a la mediación y facilitación; el estudiante se autorregula y el aula se vuelve laboratorio de problemas reales.</p></div>
+  <div><h4>Multimodalidad y atención</h4><p>Seguimiento no invasivo de atención y emoción: ante fatiga, el sistema sugiere pausas o microactividades de reenganche.</p></div>
+  <div><h4>Accesibilidad y representación</h4><p>Audio, texto estructurado y subtítulos aseguran participación equitativa sin perder exigencia científica.</p></div>
+  <div><h4>Inmersión y seguridad emocional</h4><p>El error se procesa como insumo analítico del aprendizaje experiencial, no como falla punible.</p></div>
+  <div><h4>Impacto transformacional</h4><p>Para un profesional de 35–45 años con jornada completa, andragogía + DUA asincrónico reduce barreras; para decisiones críticas en tiempo real, RV/RA o neuroadaptativa síncrona.</p></div>
+ </div>
+</section>
+
+<!-- ===== 3. CASOS ===== -->
+<section class="sec verde" id="casos" aria-labelledby="t3"><div class="info">
+ <div class="pv"><div class="lg">dnia</div><div class="dotg" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <h2 id="t3">aplica<br>ejemplifica<br>transfiere</h2><p>Cuatro casos prácticos para jóvenes adultos y profesionales de 25 a 45 años.</p></div>
+ <div class="pr">
+  <div class="card"><span>Caso 1</span>Flipped Classroom + Breakout en postgrados y formación docente<button data-m="0" aria-label="Ver caso 1">+</button></div>
+  <div class="card"><span>Caso 2</span>MEEBAI: módulo de recomendación en educación superior<button data-m="1" aria-label="Ver caso 2">+</button></div>
+  <div class="card"><span>Caso 3</span>Máster en línea asincrónico con enfoque DUA<button data-m="2" aria-label="Ver caso 3">+</button></div>
+  <div class="card"><span>Caso 4</span>Simulación inmersiva RA/RV en humanidades y arqueología pública<button data-m="3" aria-label="Ver caso 4">+</button></div>
+ </div>
+</div></section>
+
+<!-- ===== 4. IMPACTO ===== -->
+<section class="sec" id="impacto" aria-labelledby="t4">
+ <h2 class="tit rv" id="t4"><span class="d">dnia</span><span class="s">mide</span><span class="l">impacto</span></h2>
+ <div class="imp rv">
+  <div><b class="n">1</b><h3>Sostenibilidad y retención síncrona</h3><p>La estimación atencional multimodal (MEEBAI) mitiga la deserción y el agotamiento en postgrados, preservando el nivel de procesamiento cognitivo.</p></div>
+  <div><b class="n">2</b><h3>Pensamiento crítico de alto nivel</h3><p>Flipped + Breakout con auditoría de IA generativa desplaza la evaluación de la memorización hacia la formulación de prompts, el análisis de sesgos y la verificación de evidencias.</p></div>
+  <div><b class="n">3</b><h3>Optimización del tiempo</h3><p>Los itinerarios DUA asincrónicos con accesibilidad cognitiva permiten reducir tiempos ineficientes y permanecer en la formación sin afectar las cargas laborales y familiares.</p></div>
+ </div>
+ <p class="concl rv"><b>Conclusión.</b> La innovación pedagógica en entornos virtuales no depende de adoptar tecnología de forma acrítica, sino de integrar la arquitectura técnico-pedagógica, las herramientas emergentes y los principios de la andragogía. Diseñada de forma <b>adaptativa, accesible e inmersiva</b>, la educación virtual se consolida como vector del desarrollo profesional continuo, la equidad formativa y la transferencia efectiva de competencias.</p>
+ <a class="pill" href="#didacticas">Volver al inicio ↑</a>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+ <div class="f1"><div class="lg">dnia</div><div class="v"></div><div><p>Dirección Nacional de Innovación Académica</p><p>Vicerrectoría Académica</p><p>Universidad Nacional de Colombia</p></div></div>
+ <div class="f2"><span>https://dnia.unal.edu.co</span><span>innovaacadnal@unal.edu.co</span><span>(+57 601) 3165000 Ext. 15501</span></div>
+ <div class="f3"><b style="text-transform:uppercase">Contacto</b><p>Carrera 45 No. 26-85, Bogotá D.C. · <a href="mailto:innovaacadnal@unal.edu.co">innovaacadnal@unal.edu.co</a></p></div>
+</footer>
+
+<div id="md" role="dialog" aria-modal="true" aria-labelledby="mt"><div><button class="x" aria-label="Cerrar">×</button><h3 id="mt"></h3><div id="mb"></div></div></div>
+
+<script>
+/* ===== CASOS (contenido del modal) ===== */
+const C=[
+["Caso 1: Flipped Classroom + Breakout","En postgrados y actualización docente, el marco teórico se asimila antes de la sesión mediante lecturas y multimedia. La clase síncrona se organiza en salas de trabajo reducido para diseñar soluciones organizacionales o educativas.","Los grupos usan IA generativa (ChatGPT) para contrastar propuestas, generar escenarios alternativos y auditar resultados con rúbricas de pensamiento crítico.","El encuentro síncrono se vuelve producción técnica colectiva, con transferencia inmediata al contexto profesional."],
+["Caso 2: MEEBAI / módulo de recomendación","En asignaturas universitarias y de especialización por videoconferencia síncrona, MEEBAI estima la atención estudiantil con procesamiento multimodal asistido por IA.","Al detectar fatiga o caída del compromiso, activa un módulo que sugiere al docente o al estudiante microactividades: cuestionarios breves, dinámicas rápidas o descansos activos.","Reduce el abandono en clases largas, optimiza la retención y adapta el ritmo a las condiciones neurocognitivas del adulto."],
+["Caso 3: Máster en línea con enfoque DUA","Para profesionales con horarios irregulares o muy exigentes, un máster universitario estructura sus módulos de forma asincrónica bajo los principios del DUA.","Itinerarios multiformato: podcast, documentos con Lectura fácil, video con transcripción interactiva y subtítulos WCAG. Las entregas pueden ser proyectos escritos, análisis en audio o propuestas aplicadas.","Concilia obligaciones laborales, personales y académicas, y elimina la fricción temporal."],
+["Caso 4: Simulación inmersiva RA/RV","En postgrados de humanidades, arqueología pública y patrimonio cultural, los estudiantes usan visores RV y aplicaciones RA para interactuar con entornos históricos reconstruidos.","Exploran yacimientos virtuales y simulan la resolución de conflictos comunitarios sobre la preservación del patrimonio, en simulación 3D realista.","Aprendizaje experiencial en lugares de difícil acceso; estimula el razonamiento ético, la empatía intercultural y el liderazgo."]];
+const md=document.getElementById('md');
+document.querySelectorAll('.card button').forEach(b=>b.onclick=()=>{const c=C[b.dataset.m];
+ document.getElementById('mt').textContent=c[0];
+ document.getElementById('mb').innerHTML=['Contexto y ejecución','Integración tecnológica','Impacto andragógico'].map((h,i)=>`<h4>${h}</h4><p>${c[i+1]}</p>`).join('');
+ md.classList.add('on');md.querySelector('.x').focus()});
+md.onclick=e=>{if(e.target==md||e.target.classList.contains('x'))md.classList.remove('on')};
+addEventListener('keydown',e=>e.key=='Escape'&&md.classList.remove('on'));
+/* ===== REVEAL ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

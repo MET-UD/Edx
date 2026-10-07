@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Open edX 22 + Tutor 22 · Sustentación técnica</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700;800&family=Fira+Sans+Condensed:wght@400;500;800&family=Playfair+Display:ital,wght@1,700;1,800&family=Lora:wght@400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gh:#595959;--gho:#3F3F3F;--tq:#3DA5B5;--tql:#2BB8CC;--pz:#6C6C88;--az:#4A90F0;--mo:#5B3CC4;--ve:#3A8B6B;--vb:#2E9E6B;--cr:#F6F1E7;--gs:#DCDCDC;--gt:#444;--c:var(--az);--bg:#fff;--card:#fff;--ink:#444;--h:#111;--ln:#ddd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1b20;--card:#26262d;--ink:#d8d8de;--h:#f2f2f2;--ln:#3a3a42;--gs:#2b2b33;--cr:#2a2823;--gt:#d8d8de;--mo:#9b86f0}}
+:root[data-theme="dark"]{--bg:#1b1b20;--card:#26262d;--ink:#d8d8de;--h:#f2f2f2;--ln:#3a3a42;--gs:#2b2b33;--cr:#2a2823;--gt:#d8d8de;--mo:#9b86f0}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{font:400 1rem/1.6 "Fira Sans",sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden}
+:focus-visible{outline:3px solid #F0A818;outline-offset:2px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--gh);color:#fff;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;font-family:"Fira Sans Condensed",sans-serif}
+.logo{background:var(--gho);padding:.8rem 2rem .9rem 1.5rem;clip-path:polygon(0 0,100% 0,94% 100%,0 100%);box-shadow:0 4px 8px rgba(0,0,0,.3);line-height:1.1}
+.logo small{display:block;font-size:.7rem;letter-spacing:2px}.logo b{font-size:1.6rem;letter-spacing:5px}
+nav{margin-left:auto;display:flex;gap:.2rem;padding-right:1rem;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;text-transform:uppercase;padding:.8rem .6rem;font-weight:500;font-size:.9rem}nav a::after{content:" ▾";color:#6fdc9c}nav a:hover{background:var(--gho)}
+.line{height:20px;background:#000}
+.hero{background:var(--cr);min-height:520px;display:grid;place-items:center;padding:4rem 8vw;position:relative;overflow:hidden}
+.hero svg{position:absolute}.hero h1{position:relative;text-align:center}
+.hero .k{font:800 1.5rem "Fira Sans";display:block;color:var(--h)}
+.hero .big{font:800 clamp(2.6rem,9vw,7rem)/.92 "Fira Sans Condensed";text-transform:uppercase;color:var(--h);display:block}
+.hero .big i{font:italic 800 1em "Playfair Display";text-transform:none;color:var(--vb)}
+.hero p{position:relative;max-width:760px;margin:1.5rem auto 0;text-align:center;font:400 1.15rem/1.6 Lora,serif}
+.hero .or{color:#D9780F;font-weight:700;display:block;margin-top:1rem}
+.sec{position:relative;padding:7rem 8vw 5rem;--tri:#D9D9D9}
+.sec::before{content:"";position:absolute;top:0;left:50%;width:90px;height:45px;transform:translateX(-50%);background:var(--tri);clip-path:polygon(0 0,100% 0,50% 100%)}
+.tit{border-left:1px solid #bbb;padding-left:1.5rem;margin-bottom:2rem}.tit span{display:block;line-height:.95}
+.tit .d{font:800 clamp(2.2rem,5vw,4.2rem) "Fira Sans";letter-spacing:-1px;color:var(--h)}
+.tit .s{font:italic 700 clamp(2.6rem,8vw,6rem) "Playfair Display";margin-left:2rem;color:var(--c)}
+.tit .l{font:italic 700 clamp(2.2rem,6vw,4.6rem) "Playfair Display";margin-left:4rem;color:var(--ink)}
+.lead{max-width:720px;margin:0 0 2.5rem 1.5rem;font:400 1.1rem/1.7 Lora,serif}
+h4.sub{font:800 1.3rem "Fira Sans";margin:3rem 0 1rem;color:var(--h);border-left:4px solid var(--c);padding-left:.8rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.3rem}
+.dc{border-top:4px solid var(--c);padding:1.3rem;background:var(--card);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.dc .n{font:800 2.4rem/1 "Fira Sans";color:var(--c);opacity:.4}
+.dc h3{font:800 1.15rem/1.2 "Fira Sans";margin:.3rem 0 .2rem;color:var(--h)}
+.dc em{font:italic 700 .9rem "Playfair Display";color:var(--c);display:block;margin-bottom:.6rem}
+.dc p{font-size:.93rem}.dc ul{font-size:.9rem;padding-left:1.1rem}
+.mor{--c:var(--mo);--tri:#111;background:var(--gs);border-top:3px solid #000}
+.verde{--c:var(--vb)}
+.tw{overflow-x:auto;background:var(--card);box-shadow:0 6px 16px rgba(0,0,0,.1)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem}
+th{background:var(--gh);color:#fff;text-align:left;padding:.7rem;font:500 .95rem "Fira Sans Condensed";text-transform:uppercase}
+td{padding:.7rem;border-bottom:1px solid var(--ln)}td:first-child{font-weight:700;color:var(--mo)}
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin:2rem 0}
+.chips div{border-left:3px solid var(--c);padding:.2rem 1rem}.chips b{font:italic 800 1.7rem "Playfair Display";color:var(--c);display:block;line-height:1.1}.chips span{font-size:.85rem}
+/* mapas */
+.map{background:var(--card);box-shadow:0 6px 16px rgba(0,0,0,.1);padding:1.5rem;overflow-x:auto}
+.lay{display:flex;flex-direction:column;gap:.7rem;min-width:520px}
+.bx{border:2px solid var(--c);padding:.7rem 1rem;position:relative;background:var(--card)}
+.bx>b{font:800 .8rem "Fira Sans Condensed";text-transform:uppercase;letter-spacing:1px;color:var(--c);display:block;margin-bottom:.4rem}
+.row{display:flex;gap:.6rem;flex-wrap:wrap}
+.nd{background:var(--gh);color:#fff;padding:.4rem .8rem;font:500 .85rem "Fira Sans Condensed";flex:1;text-align:center;min-width:90px}
+.nd.t{background:var(--tq)}.nd.v{background:var(--vb)}.nd.m{background:var(--mo)}.nd.o{background:#D9780F}
+.arr{text-align:center;color:var(--c);font-size:1.2rem;line-height:1}
+.chain{display:flex;flex-wrap:wrap;gap:.4rem;align-items:stretch}
+.chain span{background:var(--card);border:2px solid var(--c);padding:.5rem .9rem;font:700 .9rem "Fira Sans";color:var(--h);position:relative;margin-right:1.2rem}
+.chain span:not(:last-child)::after{content:"▶";position:absolute;right:-1.2rem;top:50%;transform:translateY(-50%);color:var(--c);font-size:.9rem;width:1.2rem;text-align:center}
+.chain span.on{background:var(--c);color:#fff}
+.tree{font:500 .9rem "Fira Sans Condensed";color:var(--h)}.tree ul{list-style:none;padding-left:1.2rem;border-left:2px solid var(--c);margin-left:.4rem}
+.tree li{margin:.3rem 0;position:relative}.tree li::before{content:"";position:absolute;left:-1.2rem;top:.8em;width:1rem;border-top:2px solid var(--c)}
+.tree li>b{background:var(--c);color:#fff;padding:.1rem .6rem;font-weight:500}
+.tree li.u>b{background:var(--vb)}.tree li.k>b{background:var(--gh)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+/* pasos */
+.info{display:grid;grid-template-columns:36% 64%}
+.pv{background:var(--ve);color:#fff;padding:4rem 2.5rem;position:relative}
+.pv::before{content:"";position:absolute;left:2.5rem;top:0;bottom:0;width:1px;background:#fff;opacity:.6}
+.pv .lg{font:800 2rem "Fira Sans";margin-left:2rem}
+.pv h2{font:italic 800 clamp(2.4rem,5vw,4rem)/1 "Playfair Display";margin:1.5rem 0 1rem 2rem}
+.pv p{margin-left:2rem;max-width:300px}
+.pr{padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-content:center;background:var(--bg)}
+.card{background:rgba(90,90,90,.94);color:#fff;padding:1.2rem 1.2rem 1.4rem;font:700 1.05rem/1.25 "Fira Sans"}
+.card span{display:block;font:400 .85rem "Fira Sans";opacity:.8;margin-bottom:.4rem}
+.card small{display:block;font:400 .85rem/1.4 "Fira Sans";margin-top:.5rem;opacity:.9}.card code{font:500 .8rem "Fira Code",monospace;background:rgba(0,0,0,.3);padding:0 .3rem}
+/* codigo */
+.tabs{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:0}
+.tabs button{border:0;background:var(--gh);color:#fff;font:500 .9rem "Fira Sans Condensed";text-transform:uppercase;padding:.7rem 1rem;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--mo)}
+.cb{background:#1e1e26;color:#e8e8f0;position:relative}
+.cb pre{font:400 .85rem/1.65 "Fira Code",monospace;padding:1.5rem;overflow-x:auto;min-height:200px;white-space:pre}
+.cb .cp{position:absolute;right:.8rem;top:.8rem;border:1px solid #888;background:#33333f;color:#fff;font:500 .8rem "Fira Sans Condensed";padding:.3rem .8rem;cursor:pointer;text-transform:uppercase}
+.cb .ds{padding:.8rem 1.5rem;background:#2a2a35;font:italic 400 .95rem Lora,serif;color:#cfcfe0}
+.cm{color:#8fb3a0}.pm{color:#6fdc9c}
+/* checklist */
+.ck{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.ck div{background:var(--card);border-top:4px solid var(--c);padding:1.2rem;box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.ck h5{font:800 1rem "Fira Sans";margin-bottom:.6rem;color:var(--h)}
+.ck label{display:flex;gap:.5rem;font-size:.92rem;padding:.15rem 0;cursor:pointer}.ck input{accent-color:var(--vb);width:1.1rem;height:1.1rem}
+.ck input:checked+span{text-decoration:line-through;opacity:.55}
+ol.bp{counter-reset:b;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;padding:0}
+ol.bp li{counter-increment:b;border-left:3px solid var(--c);padding:.2rem 1rem;font-size:.93rem}
+ol.bp li::before{content:counter(b,decimal-leading-zero);font:italic 800 1.6rem "Playfair Display";color:var(--c);display:block;line-height:1}
+.concl{margin-top:3rem;background:var(--gho);color:#fff;padding:2.2rem;font:400 1.1rem/1.7 Lora,serif;border-left:8px solid var(--tql)}
+.pill{display:inline-block;border:3px solid var(--az);border-radius:999px;padding:12px 32px;color:var(--h);text-decoration:none;transition:.25s;margin-top:2rem}.pill:hover{background:var(--az);color:#fff}
+.f1{background:var(--tq);color:#fff;padding:1.5rem 8vw;display:flex;align-items:center;gap:1.5rem;clip-path:polygon(0 0,78% 0,100% 100%,0 100%)}
+.f1 .lg{font:800 3.6rem/1 "Fira Sans";letter-spacing:-1px}.f1 .v{width:1px;align-self:stretch;background:#fff}.f1 p{font:italic 500 1.05rem "Fira Sans Condensed"}
+.f2{background:var(--pz);color:#fff;display:flex;justify-content:space-around;gap:1rem;flex-wrap:wrap;padding:.9rem 2rem;font-family:"Fira Sans Condensed"}
+.rv{opacity:0;transform:translateY(30px);transition:.8s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+@media(max-width:992px){.info,.pr{grid-template-columns:1fr}.f1{clip-path:none;flex-wrap:wrap}}
+@media(max-width:768px){nav{display:none}.tit .s,.tit .l{margin-left:.5rem}.sec{padding:5rem 1.2rem 3rem}}
+</style>
+</head>
+<body>
+<header><div class="logo"><small>SUSTENTACIÓN</small><b>OPEN EDX</b><small>TUTOR 22.0.2</small></div>
+<nav aria-label="Principal"><a href="#resumen">Resumen</a><a href="#arquitectura">Arquitectura</a><a href="#servicios">Servicios</a><a href="#instalacion">Instalación</a><a href="#curso">Curso</a><a href="#codigos">Códigos</a><a href="#buenas">Prácticas</a></nav></header><div class="line"></div>
+<main>
+<section class="hero" aria-labelledby="h1">
+<svg style="left:2%;top:15%;width:150px" viewBox="0 0 160 200" aria-hidden="true"><path d="M10 150c40-90 20 60 70-20s30 80 70-40M20 90c30-40 60 20 100-30" fill="none" stroke="#2E8B6A" stroke-width="4"/></svg>
+<svg style="right:3%;bottom:8%;width:140px" viewBox="0 0 160 160" aria-hidden="true"><g fill="none" stroke="#3DA5B5" stroke-width="4"><rect x="20" y="20" width="50" height="50"/><rect x="90" y="20" width="50" height="50"/><rect x="55" y="90" width="50" height="50"/></g></svg>
+<div><h1 id="h1"><span class="k">Informe técnico · Prueba DNIA</span><span class="big">Open edX <i>sobre</i> Docker con Tutor</span></h1>
+<p>Instalación local reproducible en <b>Windows 10 + WSL2 + Docker Desktop</b>: arquitectura, servicios, operación diaria y rutinas de ejecución.<span class="or">Open edX 22.0.2 · Tutor 22.0.2 · Tema Indigo</span></p></div>
+</section>
+
+<section class="sec" id="resumen"><h2 class="tit rv"><span class="d">dnia</span><span class="s">objetivo</span><span class="l">y alcance</span></h2>
+<p class="lead rv">Registrar de forma reproducible la instalación local de Open edX para práctica técnica. <b>Docker Desktop</b> aporta el Engine y <b>Ubuntu/WSL2</b> la consola Linux desde la cual se ejecutan Docker y Tutor: no se instaló un segundo Docker Engine dentro de Ubuntu.</p>
+<div class="chips rv" id="chips"></div>
+<h4 class="sub rv">Hardware utilizado</h4>
+<div class="tw rv"><table><thead><tr><th>Recurso</th><th>Equipo</th><th>Visto por Docker/Ubuntu</th></tr></thead><tbody>
+<tr><td>CPU</td><td>AMD Ryzen 5 7520U · 4 núcleos / 8 hilos</td><td>8 CPUs</td></tr>
+<tr><td>RAM</td><td>≈ 15.28 GB utilizables</td><td>≈ 7.4 GiB (6.5 GiB disponibles) · swap 2 GiB</td></tr>
+<tr><td>Disco</td><td>SSD Samsung ≈ 477 GB</td><td>≈ 120 GB libres</td></tr></tbody></table></div>
+<p class="lead rv" style="margin-top:1rem;font-size:.95rem">Open edX recomienda 16 GB de RAM y 50 GB libres para una experiencia fluida de desarrollo.</p>
+</section>
+
+<section class="sec mor" id="arquitectura"><h2 class="tit rv"><span class="d">dnia</span><span class="s">mapas de</span><span class="l">arquitectura</span></h2>
+<p class="lead rv">Open edX usa <b>openedx-platform</b> como núcleo (LMS y Studio/CMS), servicios desplegables de forma independiente y micro-frontends React. El backend es Python/Django.</p>
+<h4 class="sub rv">Mapa 1 · Arquitectura resultante</h4>
+<div class="map rv"><div class="lay">
+<div class="bx"><b>Windows 10 x64</b><div class="row"><div class="nd">Docker Desktop · Docker Engine 29.8.1</div></div></div>
+<div class="arr">▼ integración WSL2</div>
+<div class="bx"><b>Ubuntu 24.04.3 LTS · WSL2</b><div class="row"><div class="nd t">Python 3.12</div><div class="nd t">venv (.venv)</div><div class="nd t">Tutor 22.0.2</div><div class="nd t">Docker CLI</div></div></div>
+<div class="arr">▼ Tutor → Docker Compose / proyecto <b>tutor_local</b></div>
+<div class="bx"><b>Contenedores Open edX</b><div class="row"><div class="nd o">Caddy :80</div><div class="nd v">LMS</div><div class="nd v">CMS / Studio</div><div class="nd m">MFE</div></div>
+<div class="row" style="margin-top:.5rem"><div class="nd">LMS Worker</div><div class="nd">CMS Worker</div><div class="nd">MySQL 8.4</div><div class="nd">MongoDB 7.0</div><div class="nd">Redis 7.4</div><div class="nd">Meilisearch</div><div class="nd">SMTP</div></div></div>
+</div></div>
+<h4 class="sub rv">Mapa 2 · Estructura conceptual</h4>
+<div class="map rv"><svg viewBox="0 0 700 330" style="width:100%;min-width:560px;font-family:'Fira Sans Condensed',sans-serif;font-size:15px" role="img" aria-label="Estructura conceptual de Open edX">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="#5B3CC4"/></marker></defs>
+<g stroke="#5B3CC4" stroke-width="2" fill="none" marker-end="url(#a)"><path d="M215 52v38"/><path d="M485 52v38"/><path d="M350 150v30"/><path d="M350 215L150 250"/><path d="M350 215v35"/><path d="M350 215L550 250"/><path d="M565 150v-60" stroke-dasharray="5"/></g>
+<g fill="#fff" text-anchor="middle"><rect x="140" y="10" width="150" height="42" fill="#3A8B6B"/><text x="215" y="37">LMS · estudiantes</text>
+<rect x="410" y="10" width="150" height="42" fill="#3A8B6B"/><text x="485" y="37">Studio / CMS · autores</text>
+<rect x="240" y="92" width="220" height="56" fill="#5B3CC4"/><text x="350" y="125">openedx-platform</text>
+<rect x="500" y="92" width="130" height="56" fill="#3DA5B5"/><text x="565" y="117">MFE</text><text x="565" y="136" font-size="12">React</text>
+<rect x="250" y="182" width="200" height="34" fill="#D9780F"/><text x="350" y="204">Meilisearch (búsqueda)</text>
+<rect x="60" y="252" width="180" height="56" fill="#595959"/><text x="150" y="276">MySQL</text><text x="150" y="296" font-size="12">datos transaccionales</text>
+<rect x="260" y="252" width="180" height="56" fill="#595959"/><text x="350" y="276">MongoDB</text><text x="350" y="296" font-size="12">contenido de cursos</text>
+<rect x="460" y="252" width="180" height="56" fill="#595959"/><text x="550" y="276">Redis</text><text x="550" y="296" font-size="12">caché y tareas</text></g></svg></div>
+<div class="two">
+<div><h4 class="sub rv">Mapa 3 · Tutor y Docker</h4><div class="chain rv"><span class="on">Tutor</span><span>Docker Compose</span><span>Docker Engine</span><span>Contenedores</span></div>
+<p style="margin-top:1rem;font-size:.93rem">Tutor <b>no reemplaza</b> Docker: simplifica configuración, imágenes, Compose, variables, inicialización, plugins y administración.</p></div>
+<div><h4 class="sub rv">Mapa 4 · Flujo de publicación</h4><div class="chain rv"><span class="on">Autor</span><span>Studio</span><span>Editar</span><span>Guardar</span><span>Publicar</span><span>LMS</span><span>Estudiante</span></div>
+<p style="margin-top:1rem;font-size:.93rem">Modificar, guardar y publicar son pasos distintos: un cambio en Studio no es visible al estudiante hasta publicarse.</p></div></div>
+</section>
+
+<section class="sec" id="servicios"><h2 class="tit rv"><span class="d">dnia</span><span class="s">servicios</span><span class="l">tutor_local</span></h2>
+<p class="lead rv">Tutor creó el proyecto Compose <b>tutor_local</b> con 11 contenedores (<code>tutor_local-lms-1</code>, <code>tutor_local-cms-1</code>, <code>tutor_local-mysql-1</code>…), distinguibles del contenedor independiente de n8n.</p>
+<div class="cards rv" id="svc"></div>
+</section>
+
+<section class="sec verde" id="instalacion" style="padding:0"><div class="info">
+<div class="pv"><div class="lg">dnia</div><h2>paso<br>a paso<br>instala</h2><p>Del DNS de WSL hasta <code>tutor local launch</code>: ocho etapas verificadas.</p></div>
+<div class="pr" id="pasos"></div></div></section>
+
+<section class="sec mor" id="curso"><h2 class="tit rv"><span class="d">dnia</span><span class="s">curso</span><span class="l">en Studio</span></h2>
+<p class="lead rv">Para la demostración técnica conviene dominar la jerarquía del curso y el recorrido completo de autoría a publicación.</p>
+<div class="two">
+<div><h4 class="sub rv">Mapa 5 · Jerarquía del curso</h4><div class="map tree rv"><ul style="border:0;margin:0;padding:0"><li class="k"><b>Curso</b><ul><li><b>Sección</b><ul><li><b>Subsección</b><ul><li class="u"><b>Unidad</b><ul><li class="k"><b>HTML</b></li><li class="k"><b>Video</b></li><li class="k"><b>Problema</b></li><li class="k"><b>Otros componentes</b></li></ul></li><li class="u"><b>Unidad</b></li></ul></li><li><b>Subsección</b></li></ul></li><li><b>Sección</b></li></ul></li></ul></div></div>
+<div><h4 class="sub rv">Demostración sugerida</h4><div class="tw rv"><table style="min-width:0"><tbody id="demo"></tbody></table></div></div></div>
+</section>
+
+<section class="sec" id="codigos"><h2 class="tit rv"><span class="d">dnia</span><span class="s">códigos de</span><span class="l">rutina</span></h2>
+<p class="lead rv">Comandos listos para copiar, organizados por rutina. Ejecutar desde Ubuntu/WSL2 con Docker Desktop iniciado.</p>
+<div class="rv"><div class="tabs" role="tablist" id="tabs"></div><div class="cb"><button class="cp" id="cp">Copiar</button><pre id="code" tabindex="0"></pre><div class="ds" id="ds"></div></div></div>
+</section>
+
+<section class="sec verde" id="buenas" style="background:var(--gs)"><h2 class="tit rv"><span class="d">dnia</span><span class="s">buenas</span><span class="l">prácticas</span></h2>
+<ol class="bp rv" id="bp"></ol>
+<h4 class="sub rv">Checklist antes de la prueba técnica</h4>
+<div class="ck rv" id="ck"></div>
+<h4 class="sub rv">Mapa 6 · Flujo Git para modificar Open edX</h4>
+<div class="chain rv"><span class="on">Upstream</span><span>Fork</span><span>Rama de trabajo</span><span>Cambio</span><span>Test</span><span>Commit</span><span>Push</span><span>Pull Request</span></div>
+<p class="concl rv"><b>Conclusión.</b> La plataforma quedó operativa: <b>todos los servicios en estado Up</b>, con LMS en <code>http://local.openedx.io</code> y Studio en <code>http://studio.local.openedx.io</code>. Si algo falla, primero <code>tutor local status</code> y <code>tutor local logs</code>; nunca eliminar contenedores o volúmenes antes de revisar los logs.</p>
+<a class="pill" href="#resumen">Volver al inicio ↑</a>
+</section>
+</main>
+<footer><div class="f1"><div class="lg">dnia</div><div class="v"></div><div><p>Instalación local Open edX · Prueba técnica</p><p>Tutor 22.0.2 · Open edX 22.0.2 · MFE 22.1.0</p></div></div>
+<div class="f2"><span>LMS: local.openedx.io</span><span>Studio: studio.local.openedx.io</span><span>Apps: apps.local.openedx.io</span><span>Meilisearch: meilisearch.local.openedx.io</span></div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const V=[["Windows 10","Build 19045.6466"],["WSL 2","Ubuntu 24.04.3 LTS"],["Docker 29.8.1","Compose 5.5.1"],["Python 3.12.3","venv"],["Tutor 22.0.2","Open edX 22.0.2"],["MFE 22.1.0","Tema Indigo"],["MySQL 8.4","MongoDB 7.0"],["Redis 7.4","Meilisearch 1.36"],["Caddy 2.11","Exim SMTP relay"]];
+$("chips").innerHTML=V.map(v=>`<div><b>${v[0]}</b><span>${v[1]}</span></div>`).join("");
+const S=[["Caddy","Proxy frontal","Publica el servicio HTTP: 0.0.0.0:80 → 80."],["LMS","Learning Management System","Aplicación del estudiante: autenticación, dashboard, cursos, progreso y perfiles."],["CMS / Studio","Entorno de autoría","Crear y modificar cursos, secciones, unidades y componentes; publicar cambios."],["LMS Worker","Celery","Tareas asíncronas asociadas al LMS."],["CMS Worker","Celery","Tareas asíncronas asociadas a Studio."],["MFE","Micro-frontends React","Gran parte de la interfaz moderna de Open edX."],["MySQL","Base relacional","Datos transaccionales y de aplicación."],["MongoDB","Base documental","Almacena el contenido de los cursos."],["Redis","Caché","Caching y servicios que requieren almacenamiento rápido."],["Meilisearch","Motor de búsqueda","Búsqueda para componentes de Open edX."],["SMTP","Exim relay","Relay de correo para el entorno local."]];
+$("svc").innerHTML=S.map((s,i)=>`<article class="dc"><div class="n">${String(i+1).padStart(2,"0")}</div><h3>${s[0]}</h3><em>${s[1]}</em><p>${s[2]}</p></article>`).join("");
+const P=[["DNS de WSL","Fallaba la resolución de nombres: se fijó <code>generateResolvConf = false</code> y nameserver 1.1.1.1."],["Ubuntu y Python","<code>apt update</code> e instalación de python3-pip y python3-venv (Python 3.12.3)."],["Directorio y venv","<code>~/openedx</code> con <code>python3 -m venv .venv</code> para aislar dependencias."],["Instalar Tutor",'<code>pip install "tutor[full]"</code> → versión 22.0.2.'],["Configuración inicial","<code>tutor config save --interactive</code>: no producción, idioma <code>es-419</code> (es no es válido)."],["Lanzamiento","<code>tutor local launch</code>: descarga 133 elementos entre imágenes y capas."],["Inicialización","Migraciones, índices Meilisearch, OAuth LMS–Studio, tema Indigo."],["Verificación","<code>tutor local status</code>: los 11 servicios en <b>Up</b>."]];
+$("pasos").innerHTML=P.map((p,i)=>`<div class="card"><span>Paso ${i+1}</span>${p[0]}<small>${p[1]}</small></div>`).join("");
+$("demo").innerHTML=["Crear curso","Configurar información básica","Crear sección","Crear subsección","Crear unidad","Agregar componente HTML","Agregar un problema","Guardar","Publicar","Ver el contenido desde el LMS"].map((d,i)=>`<tr><td style="width:3rem">${i+1}</td><td>${d}</td></tr>`).join("");
+const T=[
+["Inicio diario","Después de apagar el equipo: iniciar Docker Desktop y luego ejecutar esto. No usar launch.",
+`<span class="cm"># 1. Docker Desktop abierto en Windows. 2. Abrir Ubuntu:</span>
+wsl -d Ubuntu
+cd ~/openedx
+source .venv/bin/activate
+docker ps
+tutor local start
+tutor local status
+<span class="cm"># LMS    http://local.openedx.io
+# Studio http://studio.local.openedx.io</span>`],
+["Script iniciar.sh","Automatiza la rutina de arranque. Guardar como ~/openedx/iniciar.sh y dar permiso con chmod +x.",
+`#!/usr/bin/env bash
+set -e
+cd ~/openedx
+source .venv/bin/activate
+docker ps >/dev/null 2>&1 || { echo "Docker Desktop no responde"; exit 1; }
+tutor --version
+tutor local start -d   <span class="cm"># -d: en segundo plano</span>
+tutor local status
+echo "LMS:    http://local.openedx.io"
+echo "Studio: http://studio.local.openedx.io"`],
+["Operación","Detener conserva configuración y datos. Reboot reinicia toda la plataforma.",
+`tutor local stop        <span class="cm"># detiene sin eliminar</span>
+tutor local start       <span class="cm"># vuelve a iniciar</span>
+tutor local reboot      <span class="cm"># reinicia la plataforma</span>
+tutor local restart     <span class="cm"># reinicia componentes</span>
+tutor local status
+tutor local logs
+tutor config printvalue LMS_HOST
+tutor config printvalue CMS_HOST`],
+["Instalación inicial","Secuencia completa realizada en Ubuntu 24.04 sobre WSL2.",
+`<span class="cm"># DNS (si ping a archive.ubuntu.com falla)</span>
+sudo rm /etc/resolv.conf
+sudo bash -c 'echo "nameserver 1.1.1.1" > /etc/resolv.conf'
+sudo apt update
+sudo apt install python3-pip python3-venv
+mkdir -p ~/openedx &amp;&amp; cd ~/openedx
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install "tutor[full]"
+tutor --version
+tutor config save --interactive   <span class="cm"># n · título · correo · es-419</span>
+tutor local launch`],
+["wsl.conf","Contenido de /etc/wsl.conf para evitar que WSL regenere el DNS.",
+`[boot]
+systemd=true
+
+[user]
+default=ser
+
+[network]
+generateResolvConf = false`],
+["Diagnóstico","Revisar logs antes de eliminar nada. Nunca usar prune como solución genérica.",
+`<span class="cm"># Docker</span>
+docker ps
+wsl --list --verbose      <span class="cm"># PowerShell: Ubuntu y docker-desktop en v2</span>
+<span class="cm"># DNS</span>
+ping -c 3 8.8.8.8
+ping -c 3 archive.ubuntu.com
+<span class="cm"># Open edX no responde</span>
+cd ~/openedx &amp;&amp; source .venv/bin/activate
+tutor local status
+tutor local start
+tutor local logs
+<span class="cm"># Si se cortó Internet en la instalación: Ctrl + C, y luego</span>
+tutor local launch`],
+["LMS y Django","Ejecutar comandos dentro del contenedor del LMS y administrar usuarios.",
+`tutor local exec lms bash
+tutor local exec lms ./manage.py lms shell
+tutor local exec lms ./manage.py lms shell -c "from django.contrib.auth import get_user_model; print(get_user_model().objects.count())"
+tutor local exec lms ./manage.py lms createsuperuser
+<span class="cm"># Verificar un usuario existente</span>
+tutor local exec lms ./manage.py lms shell -c "from django.contrib.auth import get_user_model; U=get_user_model(); u=U.objects.get(email='CORREO'); print(u.username, u.is_staff, u.is_superuser, u.is_active)"`],
+["Plugins","Extensiones mantenibles sin editar archivos generados por Tutor.",
+`tutor plugins list
+tutor plugins -h`]];
+let cur=0;
+const tb=$("tabs");
+tb.innerHTML=T.map((t,i)=>`<button role="tab" data-i="${i}" aria-selected="${i==0}">${t[0]}</button>`).join("");
+function show(i){cur=i;tb.querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-selected",j==i));$("code").innerHTML=T[i][2];$("ds").textContent=T[i][1]}
+tb.onclick=e=>{if(e.target.dataset.i)show(+e.target.dataset.i)};show(0);
+$("cp").onclick=async()=>{const b=$("cp");try{await navigator.clipboard.writeText($("code").textContent);b.textContent="Copiado ✓"}catch(e){const r=document.createRange();r.selectNodeContents($("code"));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent="Seleccionado"}setTimeout(()=>b.textContent="Copiar",1600)};
+$("bp").innerHTML=["Mantener Tutor dentro del entorno virtual.","No instalar un segundo Docker daemon dentro de Ubuntu.","No eliminar volúmenes de Open edX sin conocer su contenido.","No usar docker system prune como solución genérica.","Mantener respaldos antes de modificaciones importantes.","Usar Git para personalizaciones de código.","Separar configuración, código y datos.","Documentar las versiones de Tutor y Open edX.","Usar plugins de Tutor para extensiones mantenibles.","Evitar modificar archivos internos de los contenedores."].map(x=>`<li>${x}</li>`).join("");
+const K=[["Sistema",["Windows iniciado","Docker Desktop iniciado","WSL2 y Ubuntu funcionando","Internet disponible"]],["Verificación",["tutor --version → 22.0.2","docker ps responde","tutor local status: todo Up","LMS y Studio abren","Usuario administrador funciona"]],["Práctica",["Crear curso, sección, subsección y unidad","Añadir HTML, video y problema","Publicar y ver desde LMS","Editar y volver a publicar"]]];
+$("ck").innerHTML=K.map(k=>`<div><h5>${k[0]}</h5>${k[1].map(x=>`<label><input type="checkbox"><span>${x}</span></label>`).join("")}</div>`).join("");
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("in")),{threshold:.1});
+document.querySelectorAll(".rv").forEach(e=>io.observe(e));
+</script>
+</body>
+</html>

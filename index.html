@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DNIA – Dirección Nacional de Innovación Académica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700;800&family=Fira+Sans+Condensed:wght@400;500;700;800&family=Playfair+Display:ital,wght@1,700;1,800;1,900&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== VARIABLES ===== */
+:root{--gris-header:#595959;--gris-header-oscuro:#3F3F3F;--turquesa:#3DA5B5;--turquesa-tab:#0E9AA7;--turquesa-link:#2BB8CC;--pizarra:#6C6C88;--azul:#4A90F0;--azul-borde:#1E7FE0;--morado:#5B3CC4;--verde:#3A8B6B;--verde-boton:#2E9E6B;--crema:#F6F1E7;--gris-seccion:#DCDCDC;--gris-texto:#444;--negro:#111;--blanco:#fff;--azul-acc:#1565C0;--c:var(--azul)}
+/* ===== BASE ===== */
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;font-size:100%}
+body{font:400 1rem/1.6 "Fira Sans",sans-serif;color:var(--gris-texto);background:#fff;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid #F0A818;outline-offset:2px}
+.sr{position:absolute;left:-9999px}
+body.contraste{filter:contrast(1.35)}body.contraste header{background:#000}
+body.subrayar a{text-decoration:underline!important}
+/* ===== HEADER ===== */
+header{position:sticky;top:0;z-index:50;background:var(--gris-header);color:#fff;font-family:"Fira Sans Condensed",sans-serif}
+.top{display:flex;justify-content:space-between;gap:1rem;padding:0 2rem 0 0;flex-wrap:wrap}
+.logo{background:var(--gris-header-oscuro);padding:.7rem 2rem .9rem 1.5rem;display:flex;gap:.8rem;align-items:center;clip-path:polygon(0 0,100% 0,94% 100%,0 100%);box-shadow:0 4px 8px rgba(0,0,0,.3);text-decoration:none}
+.logo small{display:block;font-size:.7rem;letter-spacing:2px}.logo b{font-size:1.7rem;letter-spacing:5px;line-height:1}
+.right{flex:1;display:flex;flex-direction:column;align-items:flex-end;gap:.4rem;padding:.5rem 0}
+.aud,.tools{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;font-size:.85rem}
+.aud a{padding:0 .8rem;border-left:1px solid #aaa;text-decoration:none}.aud a:first-child{border:0}
+.soc{width:24px;height:24px;border-radius:50%;background:#999;display:grid;place-items:center}
+.search{display:flex;align-items:center;background:#fff;border-radius:3px;padding:0 .5rem}
+.search input{border:0;padding:.3rem;font:inherit;width:190px;outline:0;color:#222}
+.dom{display:flex;gap:1rem;align-items:center;padding:0 2rem;font-size:.9rem}
+.dom a{color:#8CC4FF}
+nav{display:flex;align-items:center;flex:1}
+nav>ul{list-style:none;display:flex;gap:.5rem;padding:0;margin-left:auto}
+nav>ul>li{position:relative}
+nav button.m{background:0;border:0;color:#fff;font:500 .95rem "Fira Sans Condensed";text-transform:uppercase;padding:.9rem 1rem;cursor:pointer}
+nav button.m::after{content:" ▾";color:#6fdc9c}
+.sub{position:absolute;left:0;top:100%;min-width:230px;background:var(--gris-header-oscuro);list-style:none;padding:.5rem 0;opacity:0;visibility:hidden;transition:.25s}
+.sub a{display:block;padding:.5rem 1rem;text-decoration:none;font-size:.9rem}.sub a:hover{background:#555}
+li:hover>.sub,li.open>.sub{opacity:1;visibility:visible}
+.burger{display:none;background:0;border:2px solid #fff;color:#fff;padding:.3rem .7rem;margin-left:auto;font-size:1.2rem}
+.acc-btn{position:fixed;right:0;top:calc(100% - 0px);}
+#acc-b{position:absolute;right:0;top:100%;background:var(--azul-acc);color:#fff;border:0;padding:.6rem 1rem;font:500 .9rem "Fira Sans Condensed";cursor:pointer;display:flex;gap:.4rem;align-items:center}
+#acc-p{position:absolute;right:0;top:calc(100% + 40px);background:#fff;color:#222;padding:1rem;width:240px;box-shadow:0 8px 24px rgba(0,0,0,.3);display:none}
+#acc-p.on{display:block}#acc-p button{display:block;width:100%;margin:.3rem 0;padding:.5rem;border:1px solid var(--azul-acc);background:#fff;cursor:pointer;font:inherit}
+.crumbs{background:#f4f4f4;padding:.4rem 2rem;font-size:.85rem}.line{height:20px;background:#000}
+/* ===== SERVICIOS ===== */
+#tab{position:fixed;right:0;top:25%;z-index:60;background:var(--turquesa-tab);color:#fff;border:0;padding:.8rem .6rem;writing-mode:vertical-rl;font:500 1rem "Fira Sans Condensed";cursor:pointer}
+#panel{position:fixed;right:0;top:0;bottom:0;width:320px;max-width:90vw;background:#fff;z-index:70;padding:2rem;transform:translateX(100%);transition:.35s;box-shadow:-8px 0 24px rgba(0,0,0,.25)}
+#panel.on{transform:none}#panel a{display:block;padding:.8rem 0;border-bottom:1px solid #ddd;text-decoration:none;color:var(--turquesa-tab)}
+#panel button{float:right;background:0;border:0;font-size:1.6rem;cursor:pointer}
+/* ===== HERO ===== */
+.hero{background:var(--crema);min-height:600px;position:relative;overflow:hidden}
+.slide{display:none;min-height:600px;padding:4rem 8vw;align-items:center;gap:2rem;grid-template-columns:1fr 2fr 1fr}
+.slide.on{display:grid;animation:fade .6s}
+@keyframes fade{from{opacity:0}}
+.hero h2{font:800 1.8rem "Fira Sans";color:var(--gris-texto)}
+.hero .big{font:800 clamp(4rem,12vw,10rem)/.85 "Fira Sans Condensed";color:#3a3a3a;text-transform:uppercase}
+.hero .big span:nth-child(1){color:#2E8B6A}.hero .big span:nth-child(2){color:#9CC3E6}.hero .big span:nth-child(3){color:#C4B22C}.hero .big span:nth-child(4){color:#F0A818}.hero .big span:nth-child(5){color:#D9780F}
+.hero .big{text-shadow:2px 1px 0 rgba(0,0,0,.15)}
+.aviso{border:1px solid #D9A400;padding:.8rem 1rem;margin:1rem 0;font-weight:700;background:rgba(255,255,255,.5)}
+.aviso b{color:#2E8B6A;font:800 1.3rem "Fira Sans Condensed"}.aviso em{font-style:normal;color:#2E8B6A}
+.naranja{color:#D9780F;font-weight:700;font-size:1.2rem}
+.arrow,.dots{position:absolute}
+.arrow{top:50%;background:#fff;border:0;width:42px;height:42px;border-radius:50%;font-size:1.4rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.dots{bottom:1rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem}.dots button{width:12px;height:12px;border-radius:50%;border:2px solid #333;background:0;cursor:pointer}.dots .on{background:#333}
+/* ===== SECCIONES ===== */
+.sec{position:relative;padding:7rem 8vw 6rem;overflow:hidden;--c:var(--azul)}
+.sec::before{content:"";position:absolute;top:0;left:50%;width:90px;height:45px;transform:translateX(-50%);background:var(--tri,#D9D9D9);clip-path:polygon(0 0,100% 0,50% 100%)}
+.grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center;position:relative}
+.tit{border-left:1px solid #bbb;padding-left:1.5rem}
+.tit span{display:block;line-height:.95}
+.tit .d{font:800 clamp(3rem,6vw,5rem) "Fira Sans";letter-spacing:-1px;color:#111}
+.tit .s{font:italic 700 clamp(3rem,8vw,7rem) "Playfair Display",serif;margin-left:2rem;color:var(--c)}
+.tit .l{font:italic 700 clamp(3rem,8vw,7rem) "Playfair Display",serif;margin-left:4rem;color:var(--gris-texto)}
+.lead{margin:1.5rem 0 0 1.5rem;max-width:520px;font-size:1.1rem}
+.btns{display:flex;gap:2rem;flex-wrap:wrap;margin-top:3rem;justify-content:space-between;position:relative}
+.grp{max-width:420px}.grp .row{display:flex;gap:1rem;flex-wrap:wrap}
+.grp p,.lead.serif{font:400 1.1rem/1.6 Lora,serif;margin-top:1rem}
+.pill{display:inline-block;border:3px solid var(--c);border-radius:999px;padding:14px 36px;font-size:1.05rem;color:#000;text-decoration:none;background:transparent;transition:.25s}
+.pill:hover{background:var(--c);color:#fff}
+.img3d{filter:drop-shadow(0 25px 30px rgba(0,0,0,.2));animation:float 6s ease-in-out infinite;max-width:100%}
+@keyframes float{50%{transform:translateY(-14px)}}
+.plus{position:absolute;top:1.5rem;right:2rem;display:grid;grid-template-columns:repeat(4,22px);color:#ccc;font-size:1.3rem}
+.svgl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.svgl path{fill:none;stroke:#bbb;stroke-width:1;stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 2.2s ease}
+.in .svgl path{stroke-dashoffset:0}
+.svgl circle{fill:#bbb}
+.azul .grid>div:last-child{text-align:center;position:relative}
+.laptop{width:min(100%,520px)}
+.mor{--c:var(--morado);--tri:#111;background:var(--gris-seccion);border-top:3px solid #000}
+.mor .tit{border:0;position:relative}
+.mor .tit::before{content:"";position:absolute;left:-5rem;top:0;bottom:0;width:60px;background:repeating-linear-gradient(45deg,#bbb 0 2px,transparent 2px 9px)}
+.mor .tit .s{color:var(--morado)}.mor .tit .l{color:#111}.lead.j{text-align:justify}
+.scene{perspective:900px;display:grid;place-items:center;height:340px}
+.cube{width:200px;height:200px;position:relative;transform-style:preserve-3d;animation:spin 18s linear infinite}
+.cube i{position:absolute;inset:0;border:2px solid #fff;display:grid;place-items:center;font:800 2.2rem "Fira Sans";color:#fff;background:conic-gradient(from 90deg,var(--morado),#3a7bd5,#2bb8cc,var(--morado));opacity:.92}
+.cube i:nth-child(1){transform:translateZ(100px)}.cube i:nth-child(2){transform:rotateY(180deg) translateZ(100px)}.cube i:nth-child(3){transform:rotateY(90deg) translateZ(100px)}.cube i:nth-child(4){transform:rotateY(-90deg) translateZ(100px)}.cube i:nth-child(5){transform:rotateX(90deg) translateZ(100px)}.cube i:nth-child(6){transform:rotateX(-90deg) translateZ(100px)}
+@keyframes spin{to{transform:rotateX(-20deg) rotateY(360deg)}}
+.cube{transform:rotateX(-20deg)}
+/* verde */
+.verde{padding:0;--c:var(--verde-boton)}.verde::before{display:none}
+.info{display:grid;grid-template-columns:40% 60%;aspect-ratio:16/9;min-height:560px;position:relative}
+.pv{background:var(--verde);color:#fff;padding:3rem 2.5rem;position:relative;border-left:0}
+.pv::before{content:"";position:absolute;left:2.5rem;top:0;bottom:0;width:1px;background:#fff;opacity:.6}
+.pv .lg{font:800 2rem "Fira Sans";margin-left:2rem}
+.pv h2{font:italic 800 clamp(2.5rem,5vw,4.5rem)/1 "Playfair Display";margin:1.5rem 0 1rem 2rem}
+.pv p{margin-left:2rem;max-width:300px}
+.dotg{display:grid;grid-template-columns:repeat(3,10px);gap:12px;margin:2rem 0 0 2rem}.dotg i{width:6px;height:6px;border-radius:50%;background:#fff}
+.pr{padding:2rem;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:1rem;background:#fff;position:relative}
+.card{background:rgba(90,90,90,.92);color:#fff;padding:1.2rem 1.2rem 3.4rem;position:relative;font:700 1.05rem/1.25 "Fira Sans";display:flex;align-items:flex-start}
+.card button{position:absolute;right:0;bottom:0;width:40px;height:40px;border:0;background:var(--verde-boton);color:#fff;font-size:1.6rem;cursor:pointer}
+.c1{grid-column:1/3}.c3{grid-column:1/3;grid-row:2}.c4{grid-column:3;grid-row:1/3}.c5{grid-column:1/4}
+.card .play{position:absolute;right:60px;bottom:10px;width:46px;height:32px;border-radius:8px;background:#e11}
+.tools2{position:absolute;right:1rem;bottom:1rem;display:flex;gap:.5rem}.tools2 button{width:34px;height:34px;border:1px solid #aaa;background:#fff;cursor:pointer}
+/* noticias */
+.news h2{font:800 2.5rem "Fira Sans";margin-bottom:2rem}
+.ng{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.ng article{box-shadow:0 4px 14px rgba(0,0,0,.1)}.ng img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.ng div{padding:1.2rem}.ng h3{margin-bottom:.5rem}.ng a{color:var(--turquesa);font-weight:700;text-decoration:none}
+/* ===== FOOTER ===== */
+.f1{background:var(--turquesa);color:#fff;padding:1.5rem 8vw;display:flex;align-items:center;gap:1.5rem;clip-path:polygon(0 0,78% 0,100% 100%,0 100%)}
+.f1 .lg{font:800 4rem/1 "Fira Sans";letter-spacing:-1px}.f1 .v{width:1px;align-self:stretch;background:#fff}.f1 p{font:italic 500 1.05rem "Fira Sans Condensed"}
+.f2{background:var(--pizarra);color:#fff;display:flex;justify-content:space-around;gap:1rem;flex-wrap:wrap;padding:.9rem 2rem}
+.f2 span{display:flex;gap:.5rem;align-items:center}
+.f3{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url(https://picsum.photos/id/1067/1600/700) center/cover;/* REEMPLAZAR por foto real del campus */color:#fff;padding:3rem 8vw;display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:2rem}
+.f3 h4{text-transform:uppercase;font-weight:800;margin:1rem 0 .3rem}.f3 h4:first-child{margin-top:0}
+.f3 a{color:var(--turquesa-link);border-bottom:1px solid var(--turquesa-link);text-decoration:none;display:table;margin:.3rem 0}
+.eia{font:italic 400 1.4rem "Playfair Display";border-right:1px solid #fff;padding-right:1rem;display:inline-block}
+.ig{display:inline-grid;place-items:center;width:38px;height:38px;background:#fff;border-radius:8px;margin-right:.5rem;color:#222;border:0}
+/* ===== MODAL ===== */
+#modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;place-items:center;z-index:100}#modal.on{display:grid}
+#modal div{background:#fff;padding:2rem;max-width:480px;width:90%;position:relative}#modal .x{position:absolute;right:1rem;top:.5rem;background:0;border:0;font-size:1.8rem;cursor:pointer}
+/* ===== REVEAL ===== */
+.rv{opacity:0;transform:translateY(30px);transition:.8s}.rv.in,.in .rv{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.svgl path{stroke-dashoffset:0}}
+/* ===== RESPONSIVE ===== */
+@media(max-width:1200px){.dom{padding:0 1rem}}
+@media(max-width:992px){.grid,.info,.f3{grid-template-columns:1fr}.slide.on{grid-template-columns:1fr}.slide>svg{display:none}.info{aspect-ratio:auto}.pr{grid-template-columns:1fr 1fr}.c1,.c3,.c4,.c5{grid-column:auto;grid-row:auto}.ng{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.burger{display:block}nav>ul{display:none;flex-direction:column;width:100%;position:absolute;top:100%;left:0;background:var(--gris-header-oscuro)}nav>ul.on{display:flex}nav{position:static}.sub{position:static;display:none;opacity:1;visibility:visible}li.open>.sub{display:block}.svgl{display:none}.btns{flex-direction:column}.grp,.lead{max-width:none}.tit .s,.tit .l{margin-left:.5rem}.mor .tit::before{display:none}.ng,.pr{grid-template-columns:1fr}.f1{clip-path:none;flex-wrap:wrap}.aud{display:none}.right{align-items:flex-start}}
+@media(max-width:480px){.sec{padding:5rem 1.2rem 3rem}.pill{width:100%;text-align:center;padding:14px 20px}.search input{width:120px}.dom{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<a class="sr" href="#main">Saltar al contenido</a>
+
+<!-- ===== HEADER ===== -->
+<header role="banner">
+ <div class="top">
+  <a class="logo" href="#" aria-label="Universidad Nacional de Colombia">
+   <svg width="34" height="40" viewBox="0 0 34 40" aria-hidden="true"><path d="M17 1 2 7v13c0 9 7 16 15 19 8-3 15-10 15-19V7z" fill="none" stroke="#fff" stroke-width="2"/><path d="M17 10v18M9 17h16" stroke="#fff" stroke-width="2"/></svg>
+   <span><small>UNIVERSIDAD</small><b>NACIONAL</b><small>DE COLOMBIA</small></span>
+  </a>
+  <div class="right">
+   <div class="aud"><a href="#">Aspirantes</a><a href="#">Estudiantes</a><a href="#">Egresados</a><a href="#">Docentes</a><a href="#">Administrativos</a>
+    <a class="soc" href="#" aria-label="Facebook">f</a><a class="soc" href="#" aria-label="X">x</a><a class="soc" href="#" aria-label="YouTube">▶</a><span>ES ▾</span></div>
+   <div class="tools"><label class="search"><span class="sr">Buscar</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="3" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 6 6"/></svg><input type="search" placeholder="Buscar en la Universidad"></label><a href="#" style="text-decoration:none">SEDES ▾</a>
+    <svg width="30" height="30" viewBox="0 0 30 30" role="img" aria-label="Escudo de Colombia (placeholder)"><circle cx="15" cy="15" r="14" fill="#ddd"/><path d="M15 6 7 10v6c0 4 3 7 8 9 5-2 8-5 8-9v-6z" fill="#F0A818"/></svg></div>
+  </div>
+ </div>
+ <div class="dom"><svg width="18" height="22" viewBox="0 0 18 22" aria-hidden="true"><path d="M9 1a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z" fill="#fff"/></svg><a href="#">dnia.unal.edu.co</a>
+  <nav aria-label="Menú principal"><button class="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+   <ul id="menu">
+    <li><button class="m" aria-haspopup="true" aria-expanded="false">Innovación académica</button><ul class="sub"><li><a href="#">¿Qué es?</a></li><li><a href="#">Ecosistema EIA</a></li><li><a href="#">Equipo</a></li></ul></li>
+    <li><button class="m" aria-haspopup="true" aria-expanded="false">DNIA conecta</button><ul class="sub"><li><a href="#">Alianzas</a></li><li><a href="#">Convocatorias</a></li></ul></li>
+    <li><button class="m" aria-haspopup="true" aria-expanded="false">DNIA impulsa</button><ul class="sub"><li><a href="#">Repositorio</a></li><li><a href="#">Experiencias</a></li></ul></li>
+    <li><button class="m" aria-haspopup="true" aria-expanded="false">DNIA gestiona</button><ul class="sub"><li><a href="#">Coursera</a></li><li><a href="#">CloudLabs</a></li><li><a href="#">Mi Campus Virtual</a></li></ul></li>
+   </ul></nav></div>
+ <button id="acc-b" aria-expanded="false" aria-controls="acc-p"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><circle cx="12" cy="4" r="3"/><path d="M4 8h16v3h-6v4l2 7h-3l-1-6-1 6H8l2-7v-4H4z"/></svg>Panel de Accesibilidad</button>
+ <div id="acc-p" role="dialog" aria-label="Accesibilidad"><button data-a="up">A+ Aumentar letra</button><button data-a="down">A− Disminuir letra</button><button data-a="con">Alto contraste</button><button data-a="sub">Subrayar enlaces</button><button data-a="reset">Restablecer</button></div>
+</header>
+<div class="crumbs" aria-label="Migas de pan">Está en: <a href="#">Inicio</a></div><div class="line"></div>
+
+<!-- ===== SERVICIOS ===== -->
+<button id="tab" aria-expanded="false" aria-controls="panel">‹ Servicios</button>
+<aside id="panel" aria-label="Servicios"><button aria-label="Cerrar">×</button><h2>Servicios</h2><a href="#">Correo institucional</a><a href="#">Campus Virtual</a><a href="#">Biblioteca</a><a href="#">Trámites</a><a href="#">PQRS</a></aside>
+
+<main id="main">
+<!-- ===== HERO ===== -->
+<section class="hero" aria-roledescription="carrusel" aria-label="Convocatorias">
+ <div class="slide on">
+  <svg viewBox="0 0 160 200" aria-hidden="true" width="100%"><path d="M10 150c40-90 20 60 70-20s30 80 70-40M20 90c30-40 60 20 100-30" fill="none" stroke="#2E8B6A" stroke-width="4"/><path d="M30 170c40 10 70-40 110-10" fill="none" stroke="#F0A818" stroke-width="4"/></svg>
+  <div><h2>Convocatoria Nacional</h2><div class="big" aria-label="Entre pares"><div>Entre</div><div><span>P</span><span>A</span><span>R</span><span>E</span><span>S</span></div></div>
+   <p style="font-size:1.3rem;margin-top:.5rem">Iniciativas estudiantiles para la innovación académica</p>
+   <div class="aviso"><b>ATENCIÓN:</b> Las <em>inscripciones</em> se abrirán <em>próximamente</em> a través de este sitio.</div><p class="naranja">¡Estén pendientes de esta página y de nuestras redes!</p></div>
+  <svg viewBox="0 0 160 200" aria-hidden="true" width="100%"><g fill="none" stroke="#444" stroke-width="3"><circle cx="40" cy="60" r="12"/><path d="M40 72v50l-15 40M40 122l15 40M40 90l-18-30M40 90l20-30"/><circle cx="100" cy="80" r="12"/><path d="M100 92v50l-15 40M100 142l15 40M100 110l-18-30M100 110l20-30"/></g></svg>
+ </div>
+ <div class="slide"><div style="grid-column:1/-1;text-align:center"><h2>Convocatoria Nacional</h2><div class="big">Innova<br>Aula</div><p class="naranja">Segunda diapositiva – reemplazar por tu convocatoria</p></div></div>
+ <div class="slide"><div style="grid-column:1/-1;text-align:center"><h2>Próximamente</h2><div class="big">Raíces<br>y Alas</div><p class="naranja">Tercera diapositiva – reemplazar por tu contenido</p></div></div>
+ <button class="arrow" style="left:1rem" aria-label="Anterior" data-d="-1">‹</button><button class="arrow" style="right:3rem" aria-label="Siguiente" data-d="1">›</button>
+ <div class="dots" role="tablist"></div>
+</section>
+
+<!-- ===== GESTIONA ===== -->
+<section class="sec azul" aria-labelledby="t1">
+ <div class="plus" aria-hidden="true"><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i><i>+</i></div>
+ <svg class="svgl" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true"><circle cx="150" cy="330" r="5"/><path d="M150 330H520V470"/><circle cx="520" cy="470" r="5"/><path d="M780 430V560H700"/><circle cx="700" cy="560" r="5"/></svg>
+ <div class="grid">
+  <div><h2 class="tit rv" id="t1"><span class="d">dnia</span><span class="s">gestiona</span><span class="l">herramientas</span></h2>
+   <p class="lead rv">La DNIA gestiona y da acceso a <b>recursos y herramientas</b> que responden a diversas dinámicas de innovación académica.</p></div>
+  <div><!-- REEMPLAZAR por imagen real de laptop -->
+   <svg class="img3d laptop" viewBox="0 0 520 340" role="img" aria-label="Laptop blanca con pantalla azul que muestra un mapa"><rect x="70" y="10" width="380" height="250" rx="12" fill="#f4f4f4" stroke="#ddd"/><rect x="88" y="26" width="344" height="218" fill="#4A90F0"/><path d="M100 200c60-70 90 20 150-40s80 30 170-50M110 120c50 20 100-30 160 10" fill="none" stroke="#fff" stroke-width="3" opacity=".6"/><circle cx="300" cy="120" r="8" fill="#fff"/><path d="M20 270h480l-30 40H50z" fill="#e8e8e8"/></svg></div>
+ </div>
+ <div class="btns">
+  <div class="grp"><div class="row"><a class="pill" href="#">Coursera</a><a class="pill" href="#">CloudLabs</a></div><p><b>Estrategias y herramientas tecnológicas</b> que fomentan <b>el uso y la apropiación</b> de los medios y tecnologías de la información.</p></div>
+  <div class="grp" style="margin-top:4rem"><a class="pill" href="#">Mi Campus Virtual</a><p>Acceso a la plataforma de los <b>cursos virtuales</b> de la Universidad.</p></div>
+ </div>
+</section>
+
+<!-- ===== IMPULSA ===== -->
+<section class="sec mor" aria-labelledby="t2">
+ <svg class="svgl" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true"><circle cx="330" cy="150" r="5"/><path d="M330 150H640"/><circle cx="640" cy="150" r="5"/><path d="M200 330V520"/><circle cx="200" cy="520" r="5"/></svg>
+ <div class="grid">
+  <div><h2 class="tit rv" id="t2"><span class="d">dnia</span><span class="s">impulsa</span><span class="l">experiencias</span></h2>
+   <p class="lead j rv">La DNIA presenta el <b>Repositorio Institucional de Innovación Académica</b> y los <b>proyectos</b> en ejecución que fortalecen la docencia y el aprendizaje.</p></div>
+  <div class="scene"><div class="cube img3d" role="img" aria-label="Cubo tipo Rubik con elementos de la tabla periódica"><i>Un</i><i>Ac</i><i>In</i><i>Ed</i><i>Ex</i><i>Re</i></div></div>
+ </div>
+ <div class="btns"><div class="grp"><a class="pill" href="#">Repositorio Institucional</a><p>Consulta <b>recursos y experiencias</b> de innovación académica.</p></div>
+  <div class="grp"><a class="pill" href="#">Experiencias en desarrollo</a><p>Conoce los <b>proyectos</b> que hoy se ejecutan en las sedes.</p></div></div>
+</section>
+
+<!-- ===== COMPARTE ===== -->
+<section class="sec verde" aria-labelledby="t3"><div class="info">
+ <div class="pv"><div class="lg">dnia</div><div class="dotg" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <h2 id="t3">comparte<br>informa<br>conoce</h2><p>Te invitamos a conocer nuestros logros, apuestas y procesos.</p></div>
+ <div class="pr">
+  <div class="card c1">¿En qué estamos? Informe<button data-m="0" aria-label="Más información: ¿En qué estamos?">+</button></div>
+  <div class="card c2">Caracterización de Experiencias de Innovación Académica <em style="font-family:Playfair Display">eia</em><button data-m="1" aria-label="Más información: Caracterización">+</button></div>
+  <div class="card c3">Conoce más acerca de Educación mediada por Tecnologías Digitales<button data-m="2" aria-label="Más información: Educación mediada">+</button></div>
+  <div class="card c4" style="flex-direction:column">Libro Ecosistema de Innovación Académica<div style="margin:1rem auto;width:90px;height:125px;background:var(--verde);transform:perspective(300px) rotateY(-25deg);box-shadow:8px 8px 16px #0006"></div><button data-m="3" aria-label="Más información: Libro">+</button></div>
+  <div class="card c5">Documental Raíces y Alas<span class="play" aria-hidden="true"></span><button data-m="4" aria-label="Más información: Documental">+</button></div>
+ </div>
+ <div class="tools2"><button aria-label="Compartir">⤴</button><button aria-label="Pantalla completa" id="fs">⛶</button></div>
+</div></section>
+
+<!-- ===== NOTICIAS ===== -->
+<section class="sec news" style="--tri:#D9D9D9"><h2>Noticias Innovación Académica</h2>
+ <div class="ng"><!-- REEMPLAZAR imágenes picsum -->
+  <article><img src="https://picsum.photos/id/1015/640/360" alt="Estudiantes en un taller de innovación" loading="lazy"><div><h3>Taller de innovación</h3><p>Resumen breve de la noticia.</p><a href="#">Leer artículo completo →</a></div></article>
+  <article><img src="https://picsum.photos/id/1025/640/360" alt="Docentes en un foro académico" loading="lazy"><div><h3>Foro de docentes</h3><p>Resumen breve de la noticia.</p><a href="#">Leer artículo completo →</a></div></article>
+  <article><img src="https://picsum.photos/id/1043/640/360" alt="Campus universitario" loading="lazy"><div><h3>Nueva convocatoria</h3><p>Resumen breve de la noticia.</p><a href="#">Leer artículo completo →</a></div></article>
+ </div></section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+ <div class="f1"><div class="lg">dnia</div><div class="v"></div><div><p>Dirección Nacional de Innovación Académica</p><p>Vicerrectoría Académica</p><p>Universidad Nacional de Colombia</p></div></div>
+ <div class="f2"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c4 5 4 15 0 20M12 2c-4 5-4 15 0 20"/></svg>https://dnia.unal.edu.co</span><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><rect x="2" y="5" width="20" height="14"/><path d="m2 6 10 8 10-8"/></svg>innovaacadnal@unal.edu.co</span><span><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M6 2h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 4 4a2 2 0 0 1 2-2z"/></svg>(+57 601) 3165000 Ext. 15501</span></div>
+ <div class="f3">
+  <div><h4>Contacto</h4><p>Carrera 45 No. 26-85, Edificio Uriel Gutiérrez, Bogotá D.C.</p><a href="mailto:innovaacadnal@unal.edu.co">innovaacadnal@unal.edu.co</a><p>(+57 601) 3165000 Ext. 15501</p><a href="#">Acerca de este sitio web</a></div>
+  <div><h4>Recursos</h4><a href="#">Repositorio</a><h4>Otros servicios</h4><a href="#">Campus Virtual</a><h4>Educación virtual</h4><a href="#">Cursos</a><h4>PQR &amp; tratamiento de datos</h4><a href="#">Radicar PQR</a></div>
+  <div><span class="eia">eia</span> <small>Ecosistema de Innovación Académica</small><h4>Comunidad</h4><a class="ig" href="#" aria-label="Instagram" style="border:0">◎</a><a class="ig" href="#" aria-label="LinkedIn" style="border:0">in</a></div>
+ </div>
+</footer>
+
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div><button class="x" aria-label="Cerrar">×</button><h3 id="mt"></h3><p id="md" style="margin:1rem 0"></p><a id="ml" href="#" style="color:var(--turquesa)">Ir al recurso →</a></div></div>
+
+<script>
+/* ===== MENÚ ===== */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+$$('nav .m').forEach(b=>b.addEventListener('click',()=>{const li=b.parentNode,o=li.classList.toggle('open');b.setAttribute('aria-expanded',o)}));
+$('.burger').onclick=e=>{const o=$('#menu').classList.toggle('on');e.target.setAttribute('aria-expanded',o)};
+/* ===== ACCESIBILIDAD ===== */
+let fs=100;const ap=$('#acc-p');
+$('#acc-b').onclick=e=>{const o=ap.classList.toggle('on');e.currentTarget.setAttribute('aria-expanded',o)};
+ap.onclick=e=>{const a=e.target.dataset.a;if(!a)return;
+ if(a=='up')fs=Math.min(150,fs+10);if(a=='down')fs=Math.max(80,fs-10);
+ if(a=='con')document.body.classList.toggle('contraste');if(a=='sub')document.body.classList.toggle('subrayar');
+ if(a=='reset'){fs=100;document.body.classList.remove('contraste','subrayar')}
+ document.documentElement.style.fontSize=fs+'%'};
+/* ===== SERVICIOS ===== */
+const pn=$('#panel'),tb=$('#tab');
+const sp=o=>{pn.classList.toggle('on',o);tb.setAttribute('aria-expanded',o)};
+tb.onclick=()=>sp(true);$('#panel button').onclick=()=>sp(false);
+/* ===== MODAL ===== */
+const D=[["¿En qué estamos? Informe","Informe de avance de la Dirección."],["Caracterización de Experiencias","Mapa de experiencias de innovación académica."],["Educación mediada por Tecnologías Digitales","Conoce más sobre educación mediada por TD."],["Libro Ecosistema de Innovación Académica","Publicación sobre el ecosistema EIA."],["Documental Raíces y Alas","Documental sobre la innovación académica."]];
+const md=$('#modal');
+$$('.card button').forEach(b=>b.onclick=()=>{const d=D[b.dataset.m];$('#mt').textContent=d[0];$('#md').textContent=d[1];md.classList.add('on');$('.x',md).focus()});
+md.onclick=e=>{if(e.target==md||e.target.classList.contains('x'))md.classList.remove('on')};
+document.addEventListener('keydown',e=>{if(e.key=='Escape'){md.classList.remove('on');sp(false);ap.classList.remove('on')}});
+$('#fs').onclick=()=>document.fullscreenElement?document.exitFullscreen():$('.info').requestFullscreen?.();
+/* ===== CARRUSEL ===== */
+const sl=$$('.slide'),dt=$('.dots');let i=0,pause=false;
+sl.forEach((_,k)=>{const b=document.createElement('button');b.setAttribute('aria-label','Diapositiva '+(k+1));b.onclick=()=>go(k);dt.append(b)});
+function go(n){i=(n+sl.length)%sl.length;sl.forEach((s,k)=>s.classList.toggle('on',k==i));$$('button',dt).forEach((b,k)=>b.classList.toggle('on',k==i))}
+$$('.arrow').forEach(a=>a.onclick=()=>go(i+ +a.dataset.d));go(0);
+$('.hero').onmouseenter=()=>pause=true;$('.hero').onmouseleave=()=>pause=false;
+setInterval(()=>{if(!pause)go(i+1)},7000);
+/* ===== REVEAL + LÍNEAS ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.2});
+$$('.rv,.sec').forEach(el=>io.observe(el));
+/* ===== PARALLAX LEVE ===== */
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)addEventListener('scroll',()=>{$('.hero').style.backgroundPosition='0 '+scrollY*.1+'px'},{passive:true});
+</script>
+</body>
+</html>
